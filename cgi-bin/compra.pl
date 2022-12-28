@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use CGI;
 
-
 my $q = CGI->new;
 
 my $preciototal=0;
@@ -102,3 +101,21 @@ print <<HTML
     <button style="margin:auto; display:block;" onclick="window.print()">Imprimir boleta</button>
 </body>
 HTML
+
+
+## metodo para generar code
+
+# Definimos la función generate_password
+sub generar_codigo {
+  # Definimos una lista de caracteres que utilizaremos para generar la contraseña
+  my @characters = ('a'..'z', 'A'..'Z', 0..9, '!', '@', '#', '$', '%', '^', '&', '*');
+
+  # Generamos una contraseña de 8 caracteres utilizando la función rand y join
+  my $code = join '', map { $characters[rand @characters] } 0..7;
+
+  # Devolvemos la contraseña generada
+  return $code;
+}
+
+# Generamos una contraseña utilizando la función generate_password
+my $my_code = generar_codigo();
