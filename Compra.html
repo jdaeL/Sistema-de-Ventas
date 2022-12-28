@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Tienda de alimentos para mascotas</title>
+        <link rel="stylesheet" type="text/css" href="CSS/estilos.css" />
+         <link rel="icon" type="image/svg" href="Imágenes/LogoWeb.png"/>
+     </head>
+     <body class="body" style="opacity: 1;"> 
+         <span class="ir-arriba icon-ctrl"></span>
+            <header style="background: #eec615;">
+          <section>
+              <div>
+                <a href="index.html"><img src="Imágenes/LogoPNG.png" class="imagendelogo"/></a>
+                  <span class="slogan"><strong>"Porque lo mejor de alimentos balanceados y accesorios para tus animales lo encuentras aquí"</strong>
+                 </span>
+                </div>
+            </section>
+                <section>
+                    <div>
+                     <nav>
+                        <ul>
+                      <li><a href="index.html" class="subnav">INICIO</a></li>
+                      <li>
+                        <a href="Perrros.html" class="subnav">PERROS</a>
+                      </li>
+                      <li>
+                        <a href="Gatos.html" class="subnav"> GATOS</a>
+                    </li>
+                      <li>
+                        <a href="Conejos.html" class="subnav">CONEJOS</a>
+                    </li>
+                    <li>
+                      <a href="Compra.html" class="subnav">Comprar</a>
+                    </li>
+                    </nav>
+                    </div>
+                </section>
+            </header>
+          <form method="post" action="cgi-bin/compra.pl">
+            <div class="imagenesindex">
+                <div>
+                    <div>
+                        <br>
+                        <h2> DETALLES DEL COMPRADOR</h2>
+                    </div>
+                    <div>
+                        <div>
+                            NOMBRE DEL COMPRADOR
+                        </div>
+                        <div>
+                            <input type="textbox" name="nombre">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h2>Detalles de la orden</h2>
+                    </div>
+                    <div>
+                        <table class="table table-stripped tabler-border table-dense table-hover">
+                            <tr>
+                                <td>Nombre del Producto</td>
+                                <td>Precio</td>
+                                <td>Cantidad</td>
+                            </tr>
+                            <tr>
+                                <td>IDEAL VERDE x 1 UNID</td>
+                                <td> S/ 1.00 
+                                </td>
+                                <td><input type="textbox" name="producto1"></td>
+                            </tr>
+                            <tr>
+                                <td>IDEAL AZUL x 1 UNID</td>
+                                <td> S/ 1.20 </td>
+                                <td><input type="textbox" name="producto2"></td>
+                            </tr>
+                            <tr>
+                                <td>IDEAL AZUL x 6 UNID</td>
+                                <td> S/ 6.50 </td>
+                                <td><input type="textbox" name="producto3"></td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td>PARACAS 4 UNID x PQT</td>
+                                <td> S/ 8.00 </td>
+                                <td><input type="textbox" name="producto4"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIA TARRO GRANDE - AZUL</td>
+                                <td> S/ 4.00 </td>
+                                <td><input type="textbox" name="producto5"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIA TARRO GRANDE - CELESTE
+                                </td>
+                                <td> S/ 4.20 
+                                </td>
+                                <td><input type="textbox" name="producto5"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIATARRO GRANDE - MORADA</td>
+                                <td> S/ 4.00 </td>
+                                <td><input type="textbox" name="producto7"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIA TARRO GRANDE - ROJA</td>
+                                <td> S/ 4.00 </td>
+                                <td><input type="textbox" name="producto8"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIA TARRO GRANDE - AMARILLA</td>
+                                <td> S/ 4.00 </td>
+                                <td><input type="textbox" name="producto9"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE GLORIA TARRO PEQUEÑO - AZUL</td>
+                                <td> S/ 2.20 </td>
+                                <td><input type="textbox" name="producto10"></td>
+                            </tr>
+                            <tr>
+                                <td>LECHE IDEAL GRANDE - CREMOSITA</td>
+                                <td>S/ 3.80 </td>
+                                <td><input type="textbox" name="producto7"></td>
+                            </tr>
+                            <tr>
+                                <td>YOGURT GLORIA x 1 Kg</td>
+                                <td> S/ 6.50 </td>
+                                <td><input type="textbox" name="producto8"></td>
+                            </tr>
+                            <tr>
+                                <td>YOGURT GLORIA x 180 gr</td>
+                                <td>S/ 2.00 </td>
+                                <td><input type="textbox" name="producto9"></td>
+                            </tr>
+                            <tr>
+                                <td>YOGURT GLORIA x 80 gr</td>
+                                <td> S/ 1.00 </td>
+                                <td><input type="textbox" name="producto10"></td>
+                            </tr>
+                            <tr>
+                                <td>YOGURT GLORIA GRIEGO x 120 gr</td>
+                                <td> S/ 1.00 </td>
+                                <td><input type="textbox" name="producto7"></td>
+                            </tr>
+                            <tr>
+                                <td>YOGURT YOFRESH x 970 gr</td>
+                                <td> S/ 6.50 </td>
+                                <td><input type="textbox" name="producto8"></td>
+                            </tr>
+                            
+    
+                            <tr>
+    
+                        </table>
+                    </div>
+                    <div>
+                        <input type="submit">
+                    </div>
+                </div>
+            </div>
+          </form>
+        </body>
+    </html>
