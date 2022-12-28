@@ -1,76 +1,75 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
+  padding: 0;
+  width: 45%;
+  table-layout: fixed;
+  /* Centrar tabla */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table tr {
+  background-color: #ffffff4b;
+  border: 1px solid rgba(221, 221, 221, 0.514);
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.55em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
     padding: 0;
-    width: 65%;
-    table-layout: fixed;
-    /* Centrar tabla */
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    width: 1px;
   }
-  
+
   table tr {
-    background-color: #ffffff4b;
-    border: 1px solid rgba(221, 221, 221, 0.514);
-    padding: 0.35em;
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
   }
-  
-  table th,
+
   table td {
-    padding: 0.625em;
-    text-align: center;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
   }
-  
-  table th {
-    font-size: 0.55em;
-    letter-spacing: 0.1em;
+
+  table td::before {
+    content: attr(data-label); /* Fuente que puede ser leida dentro de la tabla */
+    float: left;
+    font-weight: bold;
     text-transform: uppercase;
   }
-  
-  @media screen and (max-width: 600px) {
-    table {
-      border: 0;
-    }
-  
-    table caption {
-      font-size: 1.3em;
-    }
-  
-    table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-  
-    table tr {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: 0.625em;
-    }
-  
-    table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: 0.8em;
-      text-align: right;
-    }
-  
-    table td::before {
-      content: attr(data-label); /* Fuente que puede ser leida dentro de la tabla */
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-  
-    table td:last-child {
-      border-bottom: 0;
-    }
+
+  table td:last-child {
+    border-bottom: 0;
   }
-  
-  
-  
-  
+}
+
+
+

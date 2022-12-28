@@ -1,9 +1,9 @@
 #!C:\xampp\perl\bin\perl.exe
+
 use strict;
 use warnings;
 use CGI;
 use DBI;
-use POSIX;
 
 my $q = CGI->new;
 my $preciototal=0;
@@ -12,17 +12,6 @@ my $totalobjetos=0;
 ## obtenemos el nombre
 my $name=$q->param('nombre');
 
-## obtenemos la fecha del pedido
-my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
-    $year += 1900;
-    $mon += 1;
-    # Formateamos la fecha y hora utilizando sprintf
-    my $fecha_hora = sprintf("%04d-%02d-%02d %02d:%02d:%02d", $year, $mon, $mday, $hour, $min, $sec);
-    # Imprimimos la fecha y hora
-    print "La fecha y hora actuales son: $fecha_hora\n";
-
-
-
 # imprimir html 
 print "Content-type: text/html\n\n";
 print <<HTML; 
@@ -30,10 +19,8 @@ print <<HTML;
 <head>
     <meta charset="UTF-8">
     <title>Lista del Comprador</title>
-    <link rel="icon" type="image/svg" href="../imgs/icon.png"/>
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/responsive-table.css">
-
+    <link rel="stylesheet" href="../CSS/responsive-table.css">
+</head>
 HTML
 
 my $pro1=$q->param('producto1');
@@ -59,35 +46,26 @@ my $pro18=$q->param('producto18');
 $preciototal=$pro1*1+$pro2*1.2+$pro3*6.5+$pro4*8+$pro5*4+$pro6*4.2+$pro7*4+$pro8*4+$pro9*4+$pro10*2.2+$pro11*3.8+$pro12*6.5+$pro13*2+$pro14*1+$pro15*1+$pro16*6.5+$pro17+11.5+$pro18*9;
 $totalobjetos=$pro1+$pro2+$pro3+$pro4+$pro5+$pro6+$pro7+$pro8+$pro9+$pro10+$pro11+$pro12+$pro13+$pro14+$pro15+$pro16+$pro17+$pro18;
 
-## Codigo
-my $code = generar_codigo();
 
-## Conectamos a la base de datos y conectamos los datos
-if(defined $name){
+## Conectamos a la base de datos y pasamos los datos
+my $nombre = $name;
+my $total = $preciototal;      
 
-    my $nombre = $name;             ## nombre
-    my $codigo = $code;             ## generar codigo para la compra
-    my $fecha = $fecha_hora;        ## obtenemos fecha
-    my $total = $preciototal;      
+my $user = 'root';
+my $password = '71950727joe#';
+my $dsn = "DBI:mysql:database=tienda;host=localhost";
 
-    my $user = 'root';
-    my $password = '71950727joe#';
-    my $dsn = "DBI:mysql:database=Tienda;host=localhost";
-    my $dbh = DBI ->connect($dsn,$user,$password) or die ("No se pudo conectar");
-    my $sth  = $dbh->prepare("INSERT INTO tienda (nombre, codigo, fecha, total) VALUES (?, ?, ?, ?)");
+my $dbh = DBI ->connect($dsn,$user,$password) or die ("No se pudo conectar");
+my $sth = $dbh->prepare("INSERT INTO tienda (nombre, total) VALUES (?, ?)");
 
-    $sth->excute($nombre, $codigo, $fecha, $total) or die $DBI::errstr;
+$sth->execute($nombre, $total);
     
-    $sth->finish;
-    $dbh->disconnect;
-
-}
-
+$sth->finish;
+$dbh->disconnect;
 
 
 ## Imprimimos boleta
 print <<HTML    
-</head>
 <body>
     <br><br>
     <h1 style="text-align: center;">Boleta de venta</h1>
@@ -169,10 +147,6 @@ print <<HTML
             <td>ACEITE DE SOYA SAO 900ml</td>
             <td>$pro18</td>
         </tr>
-
-
-
-
         <tr>
     </table> 
     <table>
@@ -180,26 +154,8 @@ print <<HTML
     </table> <br><br>
     <div>
         <h5>Datos de la boleta</h5>
-        <h6>Código de venta -> $code</h6>
-        <h6>Fecha -> $fecha_hora</h6>
-        <h6>Nombre -> $name</h6>
+        <h6>Nombre de cliente -> $name</h6>
     </div>
     <button style="margin:auto; display:block;" onclick="window.print()">Imprimir boleta</button>
 </body>
 HTML
-
-
-## metodo para generar code
-
-# Definimos la función generar_codigo
-sub generar_codigo() {
-  # Definimos una lista de caracteres que utilizaremos para generar la contraseña
-  my @characters = ('a'..'z', 'A'..'Z', 0..9, '!', '@', '#', '$', '%', '^', '&', '*');
-
-  # Generamos una contraseña de 8 caracteres utilizando la función rand y join
-  my $code = join '', map { $characters[rand @characters] } 0..7;
-
-  return $code;
-}
-
-
